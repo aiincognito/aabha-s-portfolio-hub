@@ -4,6 +4,7 @@ import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/sections/Hero";
 import { Placeholder } from "@/components/sections/Placeholder";
 import { About } from "@/components/sections/About";
+import { Demos } from "@/components/sections/Demos";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -30,7 +31,7 @@ function Index() {
   const sections = [
     <Hero key="hero" sectionIds={sectionIds} />,
     <About key="about" />,
-    <Placeholder key="demos" title="Demos" />,
+    <Demos key="demos" />,
     <Placeholder key="experience" title="Experience" />,
     <Placeholder key="contact" title="Contact" />,
   ];
