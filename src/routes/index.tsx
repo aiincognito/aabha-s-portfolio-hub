@@ -1,29 +1,44 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SnapScroll } from "@/components/SnapScroll";
+import { Nav } from "@/components/Nav";
+import { Hero } from "@/components/sections/Hero";
+import { Placeholder } from "@/components/sections/Placeholder";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Aabha Boob — AI Engineer" },
+      {
+        name: "description",
+        content:
+          "Aabha Boob, AI Engineer in Hyderabad. LLM pipelines, conversational agents, production-grade backends.",
+      },
+      { property: "og:title", content: "Aabha Boob — AI Engineer" },
+      {
+        property: "og:description",
+        content: "LLM pipelines, conversational agents, and production-grade backends.",
+      },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const sectionIds = ["hero", "about", "demos", "experience", "contact"];
+
 function Index() {
+  const sections = [
+    <Hero key="hero" sectionIds={sectionIds} />,
+    <Placeholder key="about" title="About" />,
+    <Placeholder key="demos" title="Demos" />,
+    <Placeholder key="experience" title="Experience" />,
+    <Placeholder key="contact" title="Contact" />,
+  ];
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main style={{ backgroundColor: "var(--bg)" }}>
+      <SnapScroll sections={sections} sectionIds={sectionIds}>
+        <Nav sectionIds={sectionIds} />
+      </SnapScroll>
+    </main>
   );
 }
