@@ -1,5 +1,6 @@
 import { useSnap } from "../SnapScroll";
 import { StatRow } from "../StatCounter";
+import { ProfileCard } from "../ProfileCard";
 
 export function Hero({ sectionIds }: { sectionIds: string[] }) {
   const { goTo } = useSnap();
@@ -106,7 +107,9 @@ export function Hero({ sectionIds }: { sectionIds: string[] }) {
           <StatRow />
         </div>
 
-        <div id="hero-card-slot" className="hidden lg:block" />
+        <div id="hero-card-slot" className="hidden md:block">
+          <ProfileCard />
+        </div>
       </div>
     </div>
   );
