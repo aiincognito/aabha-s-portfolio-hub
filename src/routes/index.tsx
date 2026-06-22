@@ -33,8 +33,8 @@ function Index() {
     <Hero key="hero" sectionIds={sectionIds} />,
     <About key="about" />,
     <Demos key="demos" />,
-    <Placeholder key="experience" title="Experience" />,
-    <Placeholder key="contact" title="Contact" />,
+    <Experience key="experience" />,
+    <Contact key="contact" />,
   ];
 
   return (
