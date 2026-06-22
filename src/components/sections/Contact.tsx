@@ -18,6 +18,12 @@ const contactLinks = [
   },
 ];
 
+const footerLinks = [
+  { label: "LinkedIn", href: "https://linkedin.com/in/aabha-boob-0b49b0246" },
+  { label: "GitHub", href: "https://github.com/Aabha-Boob" },
+  { label: "Email", href: "mailto:abhaboob8@gmail.com" },
+];
+
 export function Contact() {
   return (
     <div
