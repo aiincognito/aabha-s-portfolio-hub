@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, useState, createElement, type CSSProperties, type ElementType, type ReactNode } from "react";
 
 type Direction = "up" | "left" | "right";
 
@@ -6,14 +6,14 @@ export function Reveal({
   children,
   delay = 0,
   direction = "up",
-  as: As = "div",
+  as = "div",
   className,
   style,
 }: {
   children: ReactNode;
   delay?: number;
   direction?: Direction;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
   className?: string;
   style?: CSSProperties;
 }) {
@@ -55,6 +55,5 @@ export function Reveal({
     ...style,
   };
 
-  // @ts-expect-error dynamic tag
-  return <As ref={ref} className={className} style={combined}>{children}</As>;
+  return createElement(as, { ref, className, style: combined }, children);
 }
