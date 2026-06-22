@@ -78,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Aabha Boob — AI Engineer" },
-      { name: "description", content: "Aabha Boob, AI Engineer in Hyderabad. Building LLM pipelines, conversational agents, and production-grade backends." },
+      { name: "description", content: "Portfolio of Aabha Boob — AI Engineer building LLM pipelines, agents, and production backends." },
       { name: "author", content: "Aabha Boob" },
       { property: "og:title", content: "Aabha Boob — AI Engineer" },
       { property: "og:description", content: "LLM pipelines, conversational agents, and production-grade backends." },

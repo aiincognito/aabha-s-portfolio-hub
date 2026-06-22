@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { SectionBackdrop } from "../SectionBackdrop";
+import { Reveal } from "../Reveal";
 
 type Status = "coming-soon" | "live";
 
@@ -11,49 +13,15 @@ type Project = {
 };
 
 const projects: Project[] = [
-  {
-    title: "RAG Console",
-    description:
-      "Document retrieval dashboard with source tracing, prompt controls, and evaluation snapshots.",
-    tech: ["Next.js", "Supabase", "OpenAI"],
-    status: "coming-soon",
-  },
-  {
-    title: "Agent Lab",
-    description:
-      "A playground for chaining research, planning, and execution agents into reliable product workflows.",
-    tech: ["Python", "LangChain", "FastAPI"],
-    status: "coming-soon",
-  },
-  {
-    title: "Vision QA Suite",
-    description:
-      "Image understanding demos for structured inspection, OCR cleanup, and visual regression checks.",
-    tech: ["YOLOv5", "React", "Vercel"],
-    status: "coming-soon",
-  },
-  {
-    title: "HireVision",
-    description:
-      "Resume and JD matching using embeddings and cosine similarity with structured prompt workflows.",
-    tech: ["LangChain", "Ollama", "Streamlit"],
-    status: "coming-soon",
-  },
-  {
-    title: "Speaker Diariser",
-    description:
-      "Real-time speech-to-text with speaker segmentation and NLP-based sentiment classification.",
-    tech: ["Whisper", "Python", "Scikit-learn"],
-    status: "coming-soon",
-  },
-  {
-    title: "Eval Monitor",
-    description:
-      "Lightweight observability layer for model responses, failures, costs, and quality checks.",
-    tech: ["TypeScript", "Postgres", "Charts"],
-    status: "coming-soon",
-  },
+  { title: "RAG Console", description: "Document retrieval dashboard with source tracing, prompt controls, and evaluation snapshots.", tech: ["Next.js", "Supabase", "OpenAI"], status: "coming-soon" },
+  { title: "Agent Lab", description: "A playground for chaining research, planning, and execution agents into reliable product workflows.", tech: ["Python", "LangChain", "FastAPI"], status: "coming-soon" },
+  { title: "Vision QA Suite", description: "Image understanding demos for structured inspection, OCR cleanup, and visual regression checks.", tech: ["YOLOv5", "React", "Vercel"], status: "coming-soon" },
+  { title: "HireVision", description: "Resume and JD matching using embeddings and cosine similarity with structured prompt workflows.", tech: ["LangChain", "Ollama", "Streamlit"], status: "coming-soon" },
+  { title: "Speaker Diariser", description: "Real-time speech-to-text with speaker segmentation and NLP-based sentiment classification.", tech: ["Whisper", "Python", "Scikit-learn"], status: "coming-soon" },
+  { title: "Eval Monitor", description: "Lightweight observability layer for model responses, failures, costs, and quality checks.", tech: ["TypeScript", "Postgres", "Charts"], status: "coming-soon" },
 ];
+
+const STAGGER = [0, 0.1, 0.15, 0.2, 0.25, 0.3];
 
 function ProjectCard({ p }: { p: Project }) {
   const [hover, setHover] = useState(false);
@@ -63,7 +31,7 @@ function ProjectCard({ p }: { p: Project }) {
     <article
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="relative flex flex-col gap-3 transition-all duration-300"
+      className="relative flex flex-col gap-3 transition-all duration-300 h-full"
       style={{
         backgroundColor: "var(--card)",
         border: `0.5px solid ${hover ? "color-mix(in oklab, var(--accent) 30%, transparent)" : "var(--border)"}`,
@@ -96,10 +64,7 @@ function ProjectCard({ p }: { p: Project }) {
               fontSize: "10px",
             }}
           >
-            <span
-              className="pulse-dot inline-block w-1.5 h-1.5 rounded-full"
-              style={{ backgroundColor: "#00E676" }}
-            />
+            <span className="pulse-dot inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#00E676" }} />
             Live
           </span>
         ) : (
@@ -118,16 +83,10 @@ function ProjectCard({ p }: { p: Project }) {
         )}
       </div>
 
-      <h3
-        className="font-semibold"
-        style={{ color: "var(--highlight)", fontSize: "16px" }}
-      >
+      <h3 className="font-semibold" style={{ color: "var(--highlight)", fontSize: "16px" }}>
         {p.title}
       </h3>
-      <p
-        className="text-[12px]"
-        style={{ color: "var(--muted)", lineHeight: 1.7 }}
-      >
+      <p className="text-[12px]" style={{ color: "var(--muted)", lineHeight: 1.7 }}>
         {p.description}
       </p>
 
@@ -150,18 +109,11 @@ function ProjectCard({ p }: { p: Project }) {
 
       <div className="mt-auto pt-3">
         {isLive && p.href ? (
-          <a
-            href={p.href}
-            className="text-[12px] font-semibold"
-            style={{ color: "var(--accent)" }}
-          >
+          <a href={p.href} className="text-[12px] font-semibold" style={{ color: "var(--accent)" }}>
             View demo →
           </a>
         ) : (
-          <span
-            className="text-[12px]"
-            style={{ color: "var(--dim)", cursor: "default" }}
-          >
+          <span className="text-[12px]" style={{ color: "var(--dim)", cursor: "default" }}>
             Coming soon →
           </span>
         )}
@@ -173,35 +125,41 @@ function ProjectCard({ p }: { p: Project }) {
 export function Demos() {
   return (
     <div
-      className="w-full h-full flex items-center px-6 md:px-10 lg:px-16 py-20"
+      className="relative w-full h-full flex items-center px-4 sm:px-6 md:px-10 lg:px-16 py-20"
       style={{ backgroundColor: "var(--bg)" }}
     >
-      <div className="w-full max-w-7xl mx-auto flex flex-col gap-8">
+      <SectionBackdrop blobSide="right" blobColor="var(--accent)" blobOpacity={0.07} />
+      <div className="relative z-[1] w-full max-w-[1200px] mx-auto flex flex-col gap-8">
         <div className="flex flex-col gap-3">
-          <span
-            className="uppercase text-[11px]"
-            style={{ color: "var(--accent)", letterSpacing: "0.18em" }}
-          >
-            Demo gallery
-          </span>
-          <h2
-            className="font-semibold"
-            style={{
-              color: "var(--highlight)",
-              fontSize: "clamp(22px, 3vw, 28px)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Applied AI builds.
-          </h2>
-          <p className="text-[13px] max-w-xl" style={{ color: "var(--muted)" }}>
-            A growing collection of shipped experiments. More dropping soon.
-          </p>
+          <Reveal>
+            <span className="uppercase text-[11px]" style={{ color: "var(--accent)", letterSpacing: "0.18em" }}>
+              Demo gallery
+            </span>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2
+              className="font-semibold"
+              style={{
+                color: "var(--highlight)",
+                fontSize: "clamp(22px, 3vw, 28px)",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Applied AI builds.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="text-[13px] max-w-xl" style={{ color: "var(--muted)" }}>
+              A growing collection of shipped experiments. More dropping soon.
+            </p>
+          </Reveal>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((p) => (
-            <ProjectCard key={p.title} p={p} />
+          {projects.map((p, i) => (
+            <Reveal key={p.title} delay={STAGGER[i] ?? 0.3}>
+              <ProjectCard p={p} />
+            </Reveal>
           ))}
         </div>
       </div>

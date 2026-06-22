@@ -1,3 +1,6 @@
+import { SectionBackdrop } from "../SectionBackdrop";
+import { Reveal } from "../Reveal";
+
 type Job = {
   company: string;
   date: string;
@@ -55,32 +58,19 @@ function JobCard({ job }: { job: Job }) {
       }}
     >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
-        <span
-          className="font-semibold text-[14px]"
-          style={{ color: "var(--highlight)" }}
-        >
+        <span className="font-semibold text-[14px]" style={{ color: "var(--highlight)" }}>
           {job.company}
         </span>
-        <span
-          className="text-[11px]"
-          style={{ color: "var(--dim)" }}
-        >
+        <span className="text-[11px]" style={{ color: "var(--dim)" }}>
           {job.date}
         </span>
       </div>
-      <div
-        className="text-[12px] mb-3"
-        style={{ color: "var(--accent)" }}
-      >
+      <div className="text-[12px] mb-3" style={{ color: "var(--accent)" }}>
         {job.role}
       </div>
       <ul className="flex flex-col gap-2">
         {job.bullets.map((b, i) => (
-          <li
-            key={i}
-            className="text-[12px]"
-            style={{ color: "var(--muted)", lineHeight: 1.7 }}
-          >
+          <li key={i} className="text-[12px]" style={{ color: "var(--muted)", lineHeight: 1.7 }}>
             {b}
           </li>
         ))}
@@ -92,32 +82,36 @@ function JobCard({ job }: { job: Job }) {
 export function Experience() {
   return (
     <div
-      className="w-full h-full flex items-center px-6 md:px-10 lg:px-16 py-20"
+      className="relative w-full h-full flex items-center px-4 sm:px-6 md:px-10 lg:px-16 py-20"
       style={{ backgroundColor: "var(--bg2)" }}
     >
-      <div className="w-full max-w-4xl mx-auto flex flex-col gap-8">
+      <SectionBackdrop blobSide="right" blobColor="var(--accent3)" blobOpacity={0.09} />
+      <div className="relative z-[1] w-full max-w-4xl mx-auto flex flex-col gap-8">
         <div className="flex flex-col gap-3">
-          <span
-            className="uppercase text-[11px]"
-            style={{ color: "var(--accent)", letterSpacing: "0.18em" }}
-          >
-            Experience
-          </span>
-          <h2
-            className="font-semibold"
-            style={{
-              color: "var(--highlight)",
-              fontSize: "clamp(22px, 3vw, 28px)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Where I've shipped.
-          </h2>
+          <Reveal>
+            <span className="uppercase text-[11px]" style={{ color: "var(--accent)", letterSpacing: "0.18em" }}>
+              Experience
+            </span>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2
+              className="font-semibold"
+              style={{
+                color: "var(--highlight)",
+                fontSize: "clamp(22px, 3vw, 28px)",
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Where I've shipped.
+            </h2>
+          </Reveal>
         </div>
 
         <div className="flex flex-col gap-4">
-          {jobs.map((job) => (
-            <JobCard key={job.company} job={job} />
+          {jobs.map((job, i) => (
+            <Reveal key={job.company} delay={i * 0.1}>
+              <JobCard job={job} />
+            </Reveal>
           ))}
         </div>
       </div>

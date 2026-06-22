@@ -1,4 +1,6 @@
 import { Linkedin, Github, Phone } from "lucide-react";
+import { SectionBackdrop } from "../SectionBackdrop";
+import { Reveal } from "../Reveal";
 
 const contactLinks = [
   {
@@ -28,9 +30,10 @@ export function Contact() {
   return (
     <div
       id="contact"
-      className="relative w-full h-full flex flex-col px-6 md:px-10 py-20 overflow-hidden"
+      className="relative w-full h-full flex flex-col px-4 sm:px-6 md:px-10 py-20 overflow-hidden"
       style={{ backgroundColor: "var(--bg)" }}
     >
+      <SectionBackdrop blobSide="left" blobColor="var(--accent)" blobOpacity={0.08} />
       {/* Radial glow background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -42,7 +45,8 @@ export function Contact() {
       />
 
       {/* Main content — centered vertically */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center">
+      <div className="relative z-[1] flex-1 flex flex-col items-center justify-center">
+        <Reveal>
         <div className="flex flex-col items-center text-center gap-6 max-w-xl w-full">
           {/* Eyebrow with flanking lines */}
           <div className="flex items-center gap-3">
@@ -158,6 +162,7 @@ export function Contact() {
             })}
           </div>
         </div>
+        </Reveal>
       </div>
 
       {/* Footer */}

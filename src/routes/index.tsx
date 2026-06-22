@@ -14,12 +14,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Aabha Boob, AI Engineer in Hyderabad. LLM pipelines, conversational agents, production-grade backends.",
+          "Portfolio of Aabha Boob — AI Engineer building LLM pipelines, agents, and production backends.",
       },
       { property: "og:title", content: "Aabha Boob — AI Engineer" },
       {
         property: "og:description",
-        content: "LLM pipelines, conversational agents, and production-grade backends.",
+        content: "Portfolio of Aabha Boob — AI Engineer building LLM pipelines, agents, and production backends.",
       },
     ],
   }),
