@@ -162,6 +162,7 @@ export function Contact() {
             })}
           </div>
         </div>
+        </Reveal>
       </div>
 
       {/* Footer */}
