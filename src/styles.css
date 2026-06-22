@@ -99,3 +99,12 @@
   50% { opacity: 0.6; transform: scale(0.85); }
 }
 .pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+
+/* Prevent horizontal overflow */
+html, body { overflow-x: hidden; max-width: 100vw; }
+
+/* Ensure tap targets stay comfortable on small mobile */
+@media (max-width: 480px) {
+  button, a[role="button"], .tap-target { min-height: 44px; }
+}
+
