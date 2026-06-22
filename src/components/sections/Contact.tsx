@@ -67,7 +67,7 @@ export function Contact() {
           className="font-semibold"
           style={{
             color: "var(--highlight)",
-            fontSize: "clamp(2.5rem, 6vw, 4rem)",
+            fontSize: "clamp(1.75rem, 9vw, 2.25rem)",
             lineHeight: 1.1,
             letterSpacing: "-0.01em",
           }}
